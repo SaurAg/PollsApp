@@ -9,16 +9,19 @@
     <h4>Q) {{ q.question_text }}</h4>    
     <p>
         {% if error_msg %}<em>{{ error_msg }}</em><br>{% endif %}
+        {% if q.choice_set.all %}
             The following choices are available:
-            <form action = "vote" method="post">
-                {% csrf_token %}
-                    {% for choice in q.choice_set.all %}
-                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                        <label for = "choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-                    {% endfor %}
-                <br><input type="submit" value="Vote">
-            </form>
-        
+                <form action = "vote" method="post">
+                    {% csrf_token %}
+                        {% for choice in q.choice_set.all %}
+                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                            <label for = "choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                        {% endfor %}
+                    <br><input type="submit" value="Vote">
+                </form>
+        {% else %}
+            There are no choices to display.
+        {% endif %}    
     </p>
 </body>
 </html>
