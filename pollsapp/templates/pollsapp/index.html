@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question List</title>
+</head>
+<body>
+    {% if all_questions %}
+        <h3>Here is the list of all the questions:        </h3>
+        <h4>Click on the question to choose an option for it.</h4>
+        <ol>
+            {% for qsn in all_questions %}
+            <li><a href="/pollsapp/{{ qsn.id }}">{{ qsn.question_text }}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h3>There are no questions to display.</h3>
+    {% endif %}
+</body>
+</html>

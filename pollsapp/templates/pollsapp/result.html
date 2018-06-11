@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>The Results Page</title>
+    </head>
+    <body>
+        <h3>For the question: <em>{{ q.question_text }}</em>,<br>the vote result is:</h3>
+            <ul>
+                {% for chc in q.choice_set.all %}
+                <li>{{chc.choice_text}} : {{ chc.votes }} vote{{chc.votes|pluralize}}</li>
+                {% endfor %}
+            </ul>
+        <p>To cast another vote <a href="http://localhost:8000/pollsapp">click here</a></p>
+    </body>
+</html>
