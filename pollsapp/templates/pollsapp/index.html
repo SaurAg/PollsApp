@@ -10,7 +10,7 @@
         <h4>Click on the question to choose an option for it.</h4>
         <ol>
             {% for qsn in all_questions %}
-            <li><a href="/pollsapp/{{ qsn.id }}">{{ qsn.question_text }}</a></li>
+            <li><a href={% url "pollsapp:qsns" qsn.id %}>{{ qsn.question_text }}</a></li>
             {% endfor %}
         </ol>
     {% else %}

@@ -9,6 +9,7 @@
                 <li>{{chc.choice_text}} : {{ chc.votes }} vote{{chc.votes|pluralize}}</li>
                 {% endfor %}
             </ul>
-        <p>To cast another vote <a href="http://localhost:8000/pollsapp">click here</a></p>
+        <p>To cast another vote on the same question <a href="{% url 'pollsapp:qsns' q.id %}">click here</a></p>
+        <p>To cast a vote on another question <a href="{% url 'pollsapp:index' %}">click here</a></p>
     </body>
 </html>

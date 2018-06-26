@@ -11,11 +11,11 @@
         {% if error_msg %}<em>{{ error_msg }}</em><br>{% endif %}
         {% if q.choice_set.all %}
             The following choices are available:
-                <form action = "vote" method="post">
+                <form action = "{% url 'pollsapp:vote' q.id %}" method="post">
                     {% csrf_token %}
-                        {% for choice in q.choice_set.all %}
-                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                            <label for = "choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                        {% for chc in q.choice_set.all %}
+                            <input type="radio" name="hello" id="chce{{ forloop.counter }}" value="{{ chc.id }}">
+                            <label for = "chce{{ forloop.counter }}">{{ chc.choice_text }}</label><br>
                         {% endfor %}
                     <br><input type="submit" value="Vote">
                 </form>

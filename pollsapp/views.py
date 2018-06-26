@@ -17,7 +17,7 @@ def qsns(request, question_id):
 def vote(request, question_id):
     q = get_object_or_404(Question, pk=question_id)
     try:
-        chosen = q.choice_set.get(pk=request.POST["choice"])
+        chosen = q.choice_set.get(pk=request.POST["hello"])
     except:
         return render(request, "pollsapp/qsns.html", {'q' : q, 'error_msg' : "Please select a choice to vote"})
     else:
